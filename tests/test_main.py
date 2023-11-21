@@ -1,7 +1,7 @@
 """doc string"""
+from urllib.parse import quote
 from fastapi.testclient import TestClient
 from app.main import app
-from urllib.parse import quote
 
 VERSION = '1.0.0'
 
