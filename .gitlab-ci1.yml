@@ -1,0 +1,19 @@
+stages:
+  - test
+
+variables:
+  SECRET_KEY: $SECRET_KEY
+  DATABASE_URL: $DATABASE_URL
+
+test_job:
+  stage: test
+  image: python:3.x
+  script:
+    - python -m venv venv
+    - source venv/bin/activate
+    - pip install -r requirements.txt
+    - pytest app
+    - pylint app
+    - mypy app
+    - coverage run -m pytest app
+    - coverage report -m
