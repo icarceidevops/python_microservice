@@ -5,7 +5,7 @@ from decouple import config # type: ignore
 from openai import OpenAI
 
 
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY",config("OPENAI_API_KEY"))
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY",config("OPENAI_API_KEY", default="no key"))
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 
