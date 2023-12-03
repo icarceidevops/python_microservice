@@ -36,5 +36,5 @@ jobs:
           coverage report -m
       - name: Build Sphinx documentation
         run: |
-          cd doc
+          cd docs
           make html
