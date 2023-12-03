@@ -6,5 +6,6 @@ mypy
 httpx
 python-decouple
 openai
+coverage
 sphinx
 sphinx-rtd-theme
