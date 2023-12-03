@@ -23,16 +23,16 @@ jobs:
           pip install -r requirements.txt
       - name: Analysing the code with pylint
         run: |
-          pylint $(git ls-files '*.py')
+          pylint $(git ls-files '*.py' | grep -v '^doc/')
       - name: Type checking with MyPy
         run: |
-          mypy .
+          mypy --exclude '^doc/' .
       - name: Run tests with Pytest
         run: |
-          pytest
+          pytest --ignore=doc
       - name: Run coverage
         run: |
-          coverage run -m pytest
+          coverage run -m pytest --ignore=doc
           coverage report -m
       - name: Build Sphinx documentation
         run: |
