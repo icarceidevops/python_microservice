@@ -50,7 +50,7 @@ jobs:
           pip install -r requirements.txt
       - name: Build Sphinx documentation
         run: |
-          cd doc
+          cd docs
           make html
       - name: Deploy documentation to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
