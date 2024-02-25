@@ -76,5 +76,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: icarceidevops-docker-hub/sun_microsevice:latest
+          tags: icarcei/sun_microsevice:latest
           
