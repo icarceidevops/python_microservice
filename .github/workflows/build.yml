@@ -77,4 +77,22 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: icarcei/sun_microsevice:latest
-          
+  
+  update-container:
+    needs: build-and-push-docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up SSH Connection
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Update Docker Container on EC2 Machine
+        run: |
+          ssh user@remote-machine-ip "sudo docker pull icarcei/sun_microsevice:latest"
+          ssh user@remote-machine-ip "sudo docker stop gigi_kent || true"
+          ssh user@remote-machine-ip "sudo docker rm gigi_kent || true"
+          ssh user@remote-machine-ip "sudo docker run --name gigi_kent --restart always -e OPENAI_API_KEY=${OPENAI_API_KEY} -p 80:80 -p 8080:8080 -d icarcei/sun_microsevice:latest"

@@ -3,3 +3,8 @@ venv/
 .venv/
 .env
 *.old
+
+.terraform/
+.terraform.lock.hcl
+*.pem
+terraform.tfstat*
