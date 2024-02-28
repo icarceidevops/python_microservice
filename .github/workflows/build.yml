@@ -92,7 +92,7 @@ jobs:
 
       - name: Update Docker Container on EC2 Machine
         run: |
-          ssh user@remote-machine-ip "sudo docker pull icarcei/sun_microsevice:latest"
-          ssh user@remote-machine-ip "sudo docker stop gigi_kent || true"
-          ssh user@remote-machine-ip "sudo docker rm gigi_kent || true"
-          ssh user@remote-machine-ip "sudo docker run --name gigi_kent --restart always -e OPENAI_API_KEY=${OPENAI_API_KEY} -p 80:80 -p 8080:8080 -d icarcei/sun_microsevice:latest"
+          ssh ec2-user@${{ vars.EC2_MACHINE_IP }} "sudo docker pull icarcei/sun_microsevice:latest"
+          ssh ec2-user@${{ vars.EC2_MACHINE_IP }} "sudo docker stop gigi_kent || true"
+          ssh ec2-user@${{ vars.EC2_MACHINE_IP }} "sudo docker rm gigi_kent || true"
+          ssh ec2-user@${{ vars.EC2_MACHINE_IP }} "sudo docker run --name gigi_kent --restart always -e OPENAI_API_KEY=${OPENAI_API_KEY} -p 80:80 -p 8080:8080 -d icarcei/sun_microsevice:latest"
