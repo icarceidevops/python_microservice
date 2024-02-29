@@ -10,7 +10,7 @@ VERSION = "1.0.0"
 @app.get("/")
 async def read_root():
     """function root"""
-    return {"msg": "Hello world"}
+    return {"msg": "Hello world!!!"}
 
 
 @app.get("/name/{name}")
