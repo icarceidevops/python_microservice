@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from app.ans import q_a
 
 app = FastAPI()
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 
 @app.get("/")

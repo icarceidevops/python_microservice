@@ -3,7 +3,7 @@ from urllib.parse import quote
 from fastapi.testclient import TestClient
 from app.main import app
 
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 
 client = TestClient(app)
 
