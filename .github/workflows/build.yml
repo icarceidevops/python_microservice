@@ -88,8 +88,8 @@ jobs:
           pwd
           ls -la
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa.pem
+          chmod 400 ~/.ssh/id_rsa.pem
           touch ~/.ssh/known_hosts
           echo "${{ secrets.SSH_PUBLIC_KEY}}" >> ~/.ssh/known_hosts
       - name: Update Docker Container on EC2 Machine 
