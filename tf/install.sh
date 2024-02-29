@@ -76,4 +76,5 @@ http{
 }
 EOF
 sudo systemctl enable --now nginx.service
+echo "${github_actions_public_key}" >> /home/ec2-user/.ssh/authorized_keys
 

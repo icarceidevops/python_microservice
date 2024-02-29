@@ -7,4 +7,6 @@ venv/
 .terraform/
 .terraform.lock.hcl
 *.pem
+*.key
+*.swp
 terraform.tfstat*

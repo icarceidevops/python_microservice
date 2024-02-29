@@ -48,11 +48,6 @@ output "github_actions_private_key" {
   sensitive = true
 }
 
-resource "aws_key_pair" "github_actions_key_pair" {
-  key_name   = "github_actions-public-key"
-  public_key = tls_private_key.github_actions_key.public_key_openssh
-}
-
 resource "aws_key_pair" "ec2_key_pair" {
   key_name = "ec2_key_name"
   public_key = tls_private_key.ec2_key.public_key_openssh
@@ -95,8 +90,9 @@ resource "aws_instance" "aws_ec2"{
     security_groups = [aws_security_group.ec2_security_group.name]
 
     user_data = templatefile("${path.module}/install.sh", {
-                    environment_lines = local.environment_values
-                })
+                    environment_lines = local.environment_values,
+                    github_actions_public_key = tls_private_key.github_actions_key.public_key_openssh
+                    })
 
     tags = {
         Name = "sun-microservice-Instance"
