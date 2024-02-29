@@ -82,8 +82,6 @@ jobs:
     needs: build-and-push-docker
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
       - name: Set up SSH Connection
         run: |
           mkdir -p ~/.ssh
