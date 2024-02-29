@@ -11,7 +11,7 @@ def test_read_root():
     """doc string"""
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"msg": "Hello world"}
+    assert response.json() == {"msg": "Hello world!!!"}
 
 def test_read_item():
     """doc string"""
